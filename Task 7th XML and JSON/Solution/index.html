@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практическое занятие № 7. XML и JSON</title>
+    <style>
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #222;
+        }
+        h1 { font-size: 22px; }
+        h2 { font-size: 18px; margin-top: 32px; }
+        pre {
+            background: #f4f4f4;
+            border-left: 3px solid #999;
+            padding: 12px 16px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+        .out { background: #eef5ee; border-left-color: #4a7; }
+    </style>
+</head>
+<body>
+
+<h1>Практическое занятие № 7. Представление информации в XML и JSON</h1>
+
+<h2>Задание 3. Описание данных в JSON и вывод на страницу</h2>
+<p>Данные о книге из первого задания, записанные в JSON, преобразуются в объект
+   JavaScript и выводятся в элемент <code>&lt;pre&gt;</code> ниже.</p>
+<pre id="book-output" class="out"></pre>
+
+<h2>Задание 4. Парсинг строкового JSON</h2>
+<p>Строка <code>'{"name": "Иван", "age": 30}'</code> разбирается в объект, после чего
+   с его полями можно работать как с обычными свойствами.</p>
+<pre id="person-output" class="out"></pre>
+
+<script>
+    // --- Задание 3 -------------------------------------------------------
+    // Те же сведения о книге, что и в book.xml, но в формате JSON.
+    const bookJson = `{
+        "автор": "Лермонтов М.Ю.",
+        "название": "Герой нашего времени",
+        "издательство": "Питер",
+        "город": "Санкт-Петербург",
+        "год": 2012
+    }`;
+
+    // Преобразование JSON-текста в объект JavaScript.
+    const book = JSON.parse(bookJson);
+
+    // Вывод содержимого объекта в элемент страницы.
+    const bookOutput = document.getElementById('book-output');
+    let bookText = '';
+    for (const key in book) {
+        bookText += key + ': ' + book[key] + '\n';
+    }
+    bookOutput.textContent = bookText;
+
+    // --- Задание 4 -------------------------------------------------------
+    const personJson = '{"name": "Иван", "age": 30}';
+    const person = JSON.parse(personJson);
+
+    // После парсинга это обычный объект: к полям идёт обращение через точку.
+    document.getElementById('person-output').textContent =
+        'Тип значения после парсинга: ' + typeof person + '\n' +
+        'person.name: ' + person.name + '\n' +
+        'person.age: ' + person.age + '\n' +
+        'Через год будет: ' + (person.age + 1) + '\n' +
+        'Обратно в строку: ' + JSON.stringify(person);
+</script>
+
+</body>
+</html>
