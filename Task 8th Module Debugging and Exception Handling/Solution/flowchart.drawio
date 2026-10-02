@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ПЗ-8 блок-схема">
+    <mxGraphModel dx="1180" dy="1560" grid="1" gridSize="10" page="1" pageWidth="1180" pageHeight="1560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" value="Начало" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="14" width="240" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="input" value="Ввод X0, h" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;size=0.1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="315" y="119" width="330" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="chkstep" value="h &gt; 0 ?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="216" width="300" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="init" value="k := 0;  X := X0&#10;D := Y(X) − L" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="355" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="chkeps" value="| D | &lt; ε ?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="330" y="458" width="300" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="step" value="k := k + 1&#10;X := X0 + k · h" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="595" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="calc" value="Dпр := D&#10;D := Y(X) − L" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="705" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="chkfin" value="Y(X) конечно ?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="320" y="808" width="320" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="chksign" value="Dпр · D ≤ 0 ?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="320" y="928" width="320" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="chkmax" value="k &lt; MAX_STEPS ?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1048" width="320" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="refine" value="Уточнение X&#10;половинным делением" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1185" width="400" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="output" value="Вывод X, Y(X)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;size=0.1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1299" width="360" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="end" value="Конец" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1409" width="240" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="errstep" value="Вывод: неверный шаг" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;size=0.1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="740" y="237" width="320" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="errfin" value="Вывод: переполнение" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;size=0.1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="740" y="829" width="320" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="errmax" value="Вывод: точка&#10;не найдена" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;size=0.1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="740" y="1062" width="320" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="start" target="input">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="input" target="chkstep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="да" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkstep" target="init">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="init" target="chkeps">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="нет" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkeps" target="step">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="step" target="calc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="calc" target="chkfin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="да" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkfin" target="chksign">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="нет" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chksign" target="chkmax">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="refine" target="output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="output" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="нет" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkstep" target="errstep">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="нет" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkfin" target="errfin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="нет" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkmax" target="errmax">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="да" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkeps" target="output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="да" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chksign" target="refine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="да" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="chkmax" target="step">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="errstep" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="errfin" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontFamily=Times New Roman;fontSize=12;" edge="1" parent="1" source="errmax" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
