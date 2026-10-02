@@ -1,5 +1,9 @@
 .claude/
 
+# Java build output
+build/
+*.class
+
 # OS and editor junk
 Thumbs.db
 desktop.ini
