@@ -1,0 +1,93 @@
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #222;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+/* Задание 2. Класс active задаёт альтернативное оформление карточки. */
+.card {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #333333;
+    transition: background-color 0.3s;
+}
+
+.card.active {
+    background-color: #6c5ce7;
+    color: #ffffff;
+}
+
+/* Задание 3. Блок скрыт при загрузке, дальше им управляет slideToggle. */
+#details {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #f4f4f4;
+    border-left: 3px solid #999;
+}
+
+/* Задание 4. */
+#registrationForm label {
+    display: block;
+    margin-top: 10px;
+}
+
+#registrationForm input {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 5px 8px;
+    width: 260px;
+}
+
+#registrationForm button {
+    margin-top: 14px;
+}
+
+/* Задание 5. */
+#taskList {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.deleteButton {
+    margin-left: 12px;
+    cursor: pointer;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Практическое занятие № 9. Сценарии на jQuery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Практическое занятие № 9. Создание сценариев с использованием jQuery</h1>
+
+<section>
+    <h2>Задание 1. Подключение jQuery и обработка событий</h2>
+    <h3 id="title">Изучаем jQuery</h3>
+    <p>Нажмите кнопку, чтобы изменить заголовок.</p>
+    <button id="changeButton">Изменить заголовок</button>
+</section>
+
+<section>
+    <h2>Задание 2. Интерактивная карточка</h2>
+    <div id="card" class="card">
+        <h3>Карточка товара</h3>
+        <p>Описание выбранного товара.</p>
+        <button id="styleButton">Изменить оформление</button>
+    </div>
+</section>
+
+<section>
+    <h2>Задание 3. Раскрывающийся информационный блок</h2>
+    <button id="detailsButton">Подробнее</button>
+    <div id="details">
+        <h3>Дополнительная информация</h3>
+        <p>
+            jQuery позволяет создавать интерактивные интерфейсы, обрабатывать события
+            и изменять элементы страницы.
+        </p>
+    </div>
+</section>
+
+<section>
+    <h2>Задание 4. Обработка формы и вывод результата</h2>
+    <form id="registrationForm">
+        <label for="name">Имя:</label>
+        <input type="text" id="name">
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email">
+        <button type="submit">Отправить</button>
+    </form>
+    <p id="result"></p>
+</section>
+
+<section>
+    <h2>Задание 5. Список задач</h2>
+    <input type="text" id="taskInput" placeholder="Введите задачу">
+    <button id="addTask">Добавить</button>
+    <p id="taskMessage"></p>
+    <ul id="taskList"></ul>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
