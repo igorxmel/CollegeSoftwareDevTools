@@ -1,0 +1,75 @@
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #222;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.loading {
+    padding: 12px 16px;
+    background: #f4f4f4;
+    border-left: 3px solid #999;
+}
+
+.error {
+    padding: 12px 16px;
+    background: #fdf0ef;
+    border-left: 3px solid #c0392b;
+    color: #c0392b;
+}
+
+/* Карточки раскладываются в сетку, количество столбцов зависит от ширины окна. */
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Оформление лежит на вложенном div шаблона директивы: сам тег user-card
+   браузеру неизвестен и по умолчанию строчный. */
+.card {
+    height: 100%;
+    padding: 16px 20px;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    background-color: #fafafa;
+}
+
+.card h2 {
+    font-size: 17px;
+    margin: 0;
+}
+
+.card .username {
+    margin: 2px 0 12px;
+    color: #777;
+}
+
+.card dl {
+    margin: 0;
+    font-size: 14px;
+}
+
+.card dt {
+    float: left;
+    width: 90px;
+    color: #777;
+}
+
+.card dd {
+    margin: 0 0 4px 90px;
+}

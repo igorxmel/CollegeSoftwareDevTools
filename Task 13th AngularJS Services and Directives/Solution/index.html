@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Практическое занятие № 13. Сервисы AJAX и директивы</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="UserApp">
+
+<h1>Практическое занятие № 13. Написание собственных сервисов AJAX и директив</h1>
+
+<div ng-controller="UserListController">
+
+    <div ng-if="isLoading" class="loading">Загрузка данных...</div>
+
+    <!-- Сообщение об ошибке, его заполняет блок catch в контроллере. -->
+    <div ng-if="error" class="error">
+        <p>{{ error }}</p>
+        <button ng-click="loadUsers()">Повторить запрос</button>
+    </div>
+
+    <p ng-if="!isLoading && !error">Получено пользователей: {{ users.length }}</p>
+
+    <div class="user-grid">
+        <user-card ng-repeat="user in users" user-data="user"></user-card>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
