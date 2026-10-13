@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="practiceApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Практическое занятие № 12. AngularJS приложения</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<!-- Контроллер темы висит на body, потому что оформление меняется у всей
+     страницы. Остальные контроллеры вложены в него, каждый в своей секции. -->
+<body ng-controller="ThemeController" ng-class="{ dark: isDark }">
+
+<h1>Практическое занятие № 12. AngularJS приложения. Вариант 1</h1>
+
+<section ng-controller="StudentCardController">
+    <h2>Задание 1. Карточка студента</h2>
+
+    <label>Фамилия:</label>
+    <input type="text" ng-model="student.surname">
+
+    <label>Имя:</label>
+    <input type="text" ng-model="student.name">
+
+    <label>Группа:</label>
+    <input type="text" ng-model="student.group">
+
+    <label>Специальность:</label>
+    <input type="text" ng-model="student.speciality">
+
+    <div class="card">
+        <h3>{{ student.surname }} {{ student.name }}</h3>
+        <p>Группа: {{ student.group }}</p>
+        <p>Специальность: {{ student.speciality }}</p>
+    </div>
+</section>
+
+<section ng-controller="CounterController">
+    <h2>Задание 2. Счётчик</h2>
+
+    <p class="counter">Значение: {{ count }}</p>
+
+    <button ng-click="increase()">Увеличить</button>
+    <button ng-click="decrease()" ng-disabled="count === 0">Уменьшить</button>
+    <button ng-click="reset()">Сбросить</button>
+
+    <p class="hint" ng-if="count === 0">Счётчик на нуле, уменьшать дальше нельзя.</p>
+</section>
+
+<section ng-controller="StudentsController">
+    <h2>Задание 3. Список студентов</h2>
+
+    <label>Имя:</label>
+    <input type="text" ng-model="newStudent.name">
+
+    <label>Фамилия:</label>
+    <input type="text" ng-model="newStudent.surname">
+
+    <label>Группа:</label>
+    <input type="text" ng-model="newStudent.group">
+
+    <button ng-click="addStudent()">Добавить</button>
+
+    <p class="error" ng-if="message">{{ message }}</p>
+
+    <p>Всего записей: {{ students.length }}</p>
+
+    <p class="hint" ng-if="students.length === 0">Список пока пуст</p>
+
+    <ul>
+        <li ng-repeat="student in students">
+            {{ $index + 1 }}. {{ student.surname }} {{ student.name }}, группа {{ student.group }}
+            <button ng-click="removeStudent($index)">Удалить</button>
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Задание 4. Переключение темы</h2>
+
+    <p ng-if="isDark">Включена тёмная тема.</p>
+    <p ng-if="!isDark">Включена светлая тема.</p>
+
+    <button ng-click="toggleTheme()">{{ isDark ? 'Включить светлую тему' : 'Включить тёмную тему' }}</button>
+</section>
+
+<section ng-controller="RegistrationController">
+    <h2>Задание 5. Регистрация студента</h2>
+
+    <!-- novalidate отключает проверку силами браузера, чтобы работала
+         только проверка AngularJS. -->
+    <form name="regForm" ng-submit="submit()" novalidate>
+
+        <label>Фамилия:</label>
+        <input type="text" name="surname" ng-model="form.surname" required ng-minlength="2">
+        <span class="error" ng-show="regForm.surname.$invalid && (regForm.surname.$touched || regForm.$submitted)">
+            <span ng-show="regForm.surname.$error.required">Укажите фамилию.</span>
+            <span ng-show="regForm.surname.$error.minlength">Фамилия короче двух символов.</span>
+        </span>
+
+        <label>Имя:</label>
+        <input type="text" name="name" ng-model="form.name" required ng-minlength="2">
+        <span class="error" ng-show="regForm.name.$invalid && (regForm.name.$touched || regForm.$submitted)">
+            <span ng-show="regForm.name.$error.required">Укажите имя.</span>
+            <span ng-show="regForm.name.$error.minlength">Имя короче двух символов.</span>
+        </span>
+
+        <label>Группа:</label>
+        <input type="text" name="group" ng-model="form.group" required>
+        <span class="error" ng-show="regForm.group.$error.required && (regForm.group.$touched || regForm.$submitted)">
+            Укажите группу.
+        </span>
+
+        <label>Электронная почта:</label>
+        <input type="text" name="email" ng-model="form.email" required ng-pattern="emailPattern">
+        <span class="error" ng-show="regForm.email.$invalid && (regForm.email.$touched || regForm.$submitted)">
+            <span ng-show="regForm.email.$error.required">Укажите электронную почту.</span>
+            <span ng-show="regForm.email.$error.pattern">Почта введена в неверном формате.</span>
+        </span>
+
+        <button type="submit">Зарегистрировать</button>
+    </form>
+
+    <div class="card" ng-if="registered">
+        <h3>Регистрация принята</h3>
+        <p>{{ registered.surname }} {{ registered.name }}</p>
+        <p>Группа: {{ registered.group }}</p>
+        <p>Почта: {{ registered.email }}</p>
+    </div>
+</section>
+
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #222;
+    background-color: #ffffff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 5px 8px;
+    width: 260px;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 6px 14px;
+    margin-top: 14px;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+button[disabled] {
+    cursor: default;
+    color: #999;
+}
+
+/* Карточки заданий 1 и 5. */
+.card {
+    width: 300px;
+    margin-top: 20px;
+    padding: 16px 20px;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    background-color: #fafafa;
+}
+
+.counter {
+    font-size: 18px;
+}
+
+.hint {
+    color: #777;
+}
+
+.error {
+    color: #c0392b;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+li button {
+    margin-top: 0;
+}
+
+/* Задание 4. Класс dark ставится директивой ng-class на теге body. */
+body.dark {
+    background-color: #1e1e1e;
+    color: #e8e8e8;
+}
+
+body.dark h2 {
+    border-top-color: #444;
+}
+
+body.dark .card {
+    background-color: #2a2a2a;
+    border-color: #555;
+}
+
+body.dark .hint {
+    color: #aaa;
+}
+
+body.dark .error {
+    color: #ff8a7a;
+}
+
+body.dark input {
+    background-color: #2a2a2a;
+    color: #e8e8e8;
+    border: 1px solid #555;
+}
