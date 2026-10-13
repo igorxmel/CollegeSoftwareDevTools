@@ -1,0 +1,13 @@
+{
+  "name": "practice11",
+  "version": "1.0.0",
+  "description": "Fetching characters from an external API on Node.js",
+  "main": "getCharacter.js",
+  "scripts": {
+    "start": "node getCharacter.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
