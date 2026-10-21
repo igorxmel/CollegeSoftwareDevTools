@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка сообщения на спам</title>
+</head>
+<body>
+    <h1>Проверка сообщения на спам</h1>
+
+    <label for="message">Сообщение</label>
+    <input id="message" type="text" value="Выиграйте кредит без процентов" size="40">
+    <button id="check" type="button">Проверить</button>
+
+    <p id="result"></p>
+
+    <script type="module">
+        import { checkMessage } from "./message-checker.js";
+
+        const input = document.getElementById("message");
+        const result = document.getElementById("result");
+
+        document.getElementById("check").addEventListener("click", () => {
+            result.textContent = checkMessage(input.value);
+        });
+    </script>
+</body>
+</html>
