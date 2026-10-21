@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Процент выполнения задачи</title>
+</head>
+<body>
+    <h1>Процент выполнения задачи</h1>
+
+    <label for="done">Выполнено</label>
+    <input id="done" type="number" min="0" step="1">
+
+    <label for="total">Всего</label>
+    <input id="total" type="number" min="1" step="1">
+
+    <button id="calculate" type="button">Рассчитать</button>
+
+    <p id="result"></p>
+    <progress id="bar" max="100" value="0"></progress>
+
+    <script src="dist/main.js"></script>
+</body>
+</html>
