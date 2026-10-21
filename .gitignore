@@ -11,6 +11,10 @@ build/
 # Node.js dependencies, restored by npm install
 node_modules/
 
+# Python cache from the report generators
+__pycache__/
+*.pyc
+
 # OS and editor junk
 Thumbs.db
 desktop.ini

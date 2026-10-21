@@ -7,7 +7,7 @@
 
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
-from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt
 
@@ -75,23 +75,43 @@ def para(doc, text="", *, indent=INDENT, align=WD_ALIGN_PARAGRAPH.JUSTIFY, bold=
     return p
 
 
-def code(doc, text):
+def _wrap_code_line(line, width):
+    if len(line) <= width:
+        return [line]
+
+    indent = len(line) - len(line.lstrip())
+    prefix = " " * indent
+    parts = []
+    current = line
+    while len(current) > width:
+        cut = current.rfind(" ", 0, width + 1)
+        if cut <= indent:
+            cut = width
+        parts.append(current[:cut].rstrip())
+        current = prefix + current[cut:].lstrip()
+    parts.append(current)
+    return parts
+
+
+def code(doc, text, *, width=None):
     for line in text.splitlines():
-        p = doc.add_paragraph()
-        p.paragraph_format.first_line_indent = Cm(0)
-        p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
-        p.paragraph_format.line_spacing = 1.0
-        p.paragraph_format.space_before = Pt(0)
-        p.paragraph_format.space_after = Pt(0)
-        run = p.add_run(line)
-        run.font.name = MONO
-        run.font.size = CODE_SIZE
-        run.element.rPr.rFonts.set(qn("w:eastAsia"), MONO)
+        for part in (_wrap_code_line(line, width) if width else [line]):
+            p = doc.add_paragraph()
+            p.paragraph_format.first_line_indent = Cm(0)
+            p.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            p.paragraph_format.line_spacing = 1.0
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(0)
+            run = p.add_run(part)
+            run.font.name = MONO
+            run.font.size = CODE_SIZE
+            run.element.rPr.rFonts.set(qn("w:eastAsia"), MONO)
 
 
-def listing(doc, path, caption_text=None):
-    para(doc, caption_text or f"Листинг файла {path.name}:", indent=Cm(0))
-    code(doc, path.read_text(encoding="utf-8").rstrip())
+def listing(doc, path, caption_text=None, *, width=None):
+    p = para(doc, caption_text or f"Листинг файла {path.name}:", indent=Cm(0))
+    p.paragraph_format.keep_with_next = True
+    code(doc, path.read_text(encoding="utf-8").rstrip(), width=width)
     blank(doc)
 
 
@@ -101,19 +121,22 @@ def blank(doc, n=1):
 
 
 def heading(doc, number, title, *, new_page=True):
+    p = para(doc, f"{number} {title}", align=WD_ALIGN_PARAGRAPH.LEFT, bold=True)
+    p.paragraph_format.keep_with_next = True
     if new_page:
-        para(doc).add_run().add_break(WD_BREAK.PAGE)
-    para(doc, f"{number} {title}", align=WD_ALIGN_PARAGRAPH.LEFT, bold=True)
+        p.paragraph_format.page_break_before = True
     blank(doc)
 
 
 def subheading(doc, number, title):
-    para(doc, f"{number} {title}", align=WD_ALIGN_PARAGRAPH.LEFT, bold=True)
+    p = para(doc, f"{number} {title}", align=WD_ALIGN_PARAGRAPH.LEFT, bold=True)
+    p.paragraph_format.keep_with_next = True
     blank(doc)
 
 
 def caption(doc, text):
-    para(doc, text, indent=Cm(0), align=WD_ALIGN_PARAGRAPH.CENTER)
+    p = para(doc, text, indent=Cm(0), align=WD_ALIGN_PARAGRAPH.CENTER)
+    p.paragraph_format.keep_with_next = True
 
 
 def table(doc, header, rows, widths):

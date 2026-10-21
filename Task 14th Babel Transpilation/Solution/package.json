@@ -1,0 +1,15 @@
+{
+  "name": "babel-transpilation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Practical work 14: Babel transpilation",
+  "scripts": {
+    "build": "babel script.js arrays.js student.js --out-dir dist",
+    "build:legacy": "babel script.js arrays.js student.js --config-file ./babel.config.legacy.json --out-dir dist-legacy"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7"
+  }
+}
