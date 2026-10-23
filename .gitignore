@@ -11,6 +11,9 @@ build/
 # Node.js dependencies, restored by npm install
 node_modules/
 
+# Vite build output. The WebPack bundle in Task 16 stays tracked on purpose.
+dist/
+
 # Python cache from the report generators
 __pycache__/
 *.pyc
