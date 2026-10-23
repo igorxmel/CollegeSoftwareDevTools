@@ -1,0 +1,17 @@
+{
+  "name": "dynamic-router-server",
+  "version": "1.0.0",
+  "description": "REST API для приложения Dream Sneakers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0"
+  }
+}
