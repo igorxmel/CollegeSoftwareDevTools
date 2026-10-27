@@ -1,0 +1,15 @@
+{
+  "name": "typescript-typing",
+  "version": "1.0.0",
+  "description": "Практическое занятие 20: типизация JavaScript-кода на TypeScript",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/main.js"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
