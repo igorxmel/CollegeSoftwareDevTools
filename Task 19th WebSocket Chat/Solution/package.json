@@ -1,0 +1,14 @@
+{
+  "name": "dream-sneakers-chat",
+  "version": "1.0.0",
+  "description": "WebSocket-чат и уведомления для магазина Dream Sneakers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

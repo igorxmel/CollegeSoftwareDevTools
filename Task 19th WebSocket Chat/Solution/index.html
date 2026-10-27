@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Sneakers: чат с консультантом</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="chat">
+        <header class="chat__header">
+            <h1 class="chat__title">Dream Sneakers</h1>
+            <p class="chat__subtitle">Чат покупателей и консультантов</p>
+            <div class="chat__meta">
+                <span id="status" class="status status--connecting">Подключение…</span>
+                <span id="online" class="chat__online">Онлайн: 0</span>
+            </div>
+        </header>
+
+        <section id="notices" class="notices" aria-label="Уведомления магазина"></section>
+
+        <ul id="messages" class="messages"></ul>
+
+        <p id="error" class="chat__error" role="alert"></p>
+
+        <form id="form" class="form">
+            <input id="name" class="form__name" placeholder="Ваше имя" maxlength="30" autocomplete="off">
+            <input id="message" class="form__message" placeholder="Введите сообщение" maxlength="300" autocomplete="off">
+            <button id="send" class="form__send" type="submit" disabled>Отправить</button>
+        </form>
+    </main>
+
+    <script src="chat.js"></script>
+</body>
+</html>
